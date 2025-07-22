@@ -54,7 +54,7 @@ This project automates the creation of professional incident reports from Slack 
 ### 1. Clone and Install Dependencies
 
 ```bash
-git clone 
+git clone https://github.com/Aj7Ay/Amazon-Q.git
 cd Challenge-1
 pip install -r requirements.txt
 ```
