@@ -8,7 +8,7 @@ layout: cover
 
 Build isolated, secure, and highly connected networks on AWS
 
-<!--
+
 Hey everyone! Welcome! Today we are going to learn something REALLY cool.
 
 Have you ever built a house out of Lego bricks? You pick where the rooms go, where the doors are, and who is allowed inside, right?
@@ -18,7 +18,7 @@ Well today, we are going to build a house - but on the INTERNET! And this house 
 By the end of today, YOU will know how to build your very own private house on Amazon's giant cloud. You will know how to put rooms in it, lock the doors, and even build roads to connect it to other houses.
 
 Sounds fun? Let's go!
--->
+
 
 ---
 layout: section
@@ -27,7 +27,6 @@ icon: fa-solid fa-city
 
 # What is a VPC?
 
-<!--
 Okay, before we start building, let's understand WHY we need a VPC.
 
 Imagine Amazon Web Services is like a HUGE city - like a really really big city with thousands of buildings.
@@ -45,7 +44,6 @@ That private neighborhood is called a VPC - Virtual Private Cloud.
 "Cloud" means it lives on Amazon's computers.
 
 Cool right? Let's go deeper!
--->
 
 ---
 layout: default
@@ -60,7 +58,6 @@ layout: default
 - Spans all Availability Zones within a single AWS Region
 - Every AWS account gets a **default VPC** per region - ready to launch instantly
 
-<!--
 Let's use the city picture to understand this perfectly.
 
 Imagine AWS is like New York City - a MASSIVE city with millions of buildings.
@@ -78,7 +75,7 @@ Here is the really cool part: even though thousands of other people are using AW
 Now, "logically isolated" sounds like a big scary phrase, but it just means: software creates a wall between you and everyone else. You are sharing the same physical computers with others (just like how you share a school building with other classes), but your work is completely separate from theirs.
 
 The DEFAULT VPC is like when you first move into a city and the landlord has already furnished a basic apartment for you. Everything is set up so you can start immediately! But as you get more experienced, you want to design your own custom home. That is what professionals do.
--->
+
 
 ---
 layout: points-4
@@ -98,7 +95,7 @@ points:
     faIcon: fa-solid fa-star
 ---
 
-<!--
+
 Before we build anything, we need to learn 4 important words. Think of these like the rules of the game before you start playing!
 
 WORD 1 - REGION:
@@ -132,7 +129,6 @@ When you first sign up for AWS, Amazon is very kind. They create a VPC for you a
 It is like how your phone comes with some apps already installed. You did not set them up, but they are there and work. Great for learning!
 
 But for real production work, you always create your OWN custom VPC. Just like how you customize your phone with your own apps and wallpaper.
--->
 
 ---
 layout: section
@@ -141,7 +137,6 @@ icon: fa-solid fa-sitemap
 
 # Subnets and IP Addressing
 
-<!--
 Okay! We have our neighborhood (VPC). Now we need to build the ROOMS inside it!
 
 In a real house, you have a kitchen, a bedroom, a bathroom. Each room has a different purpose.
@@ -149,7 +144,6 @@ In a real house, you have a kitchen, a bedroom, a bathroom. Each room has a diff
 In a VPC, the rooms are called SUBNETS. And just like rooms, each subnet has a different purpose.
 
 Let's learn about the three types of rooms you can have in your VPC house!
--->
 
 ---
 layout: points-3
@@ -169,7 +163,7 @@ points:
     flat: true
 ---
 
-<!--
+
 Think of your VPC like a real house. It has different types of rooms and they each have different security levels.
 
 TYPE 1 - PUBLIC SUBNET (the living room):
@@ -192,7 +186,6 @@ This is the most locked room in the house. It is completely sealed off. Nothing 
 In your VPC, isolated subnets are for your most secret, sensitive data - like bank account details, passwords, encryption keys. These computers do not need internet at all. They just sit there safely storing important data, and only other computers INSIDE your VPC can talk to them.
 
 So the rule is: Load Balancer in public, App Server in private, Database in isolated. Three layers of protection. Like a knight wearing three sets of armor!
--->
 
 ---
 layout: two-cols
@@ -214,7 +207,7 @@ heading: CIDR Blocks - Your IP Address Space
 - No private ranges - control access via SGs/NACLs
 - Dual-stack: run IPv4 and IPv6 together
 
-<!--
+
 Okay, IP addresses! This sounds scary but let's make it super simple.
 
 Every computer on a network needs an address - just like every house on a street needs a house number. Without a number, how would the postman know where to deliver letters?
@@ -263,7 +256,6 @@ steps:
     description: Security Groups on instances (stateful) and NACLs on subnets (stateless) provide layered defense.
 ---
 
-<!--
 Building a VPC is like building a LEGO house! Let's go step by step.
 
 Imagine you just bought a big empty plot of land and you want to build an amazing house on it.
@@ -331,7 +323,7 @@ flowchart TB
     PrivA --> DB
 ```
 
-<!--
+
 Look at this picture! Let's read it together like a story. Point to each part as you explain.
 
 AT THE TOP: "The Internet" - this is the BIG internet. Every person on Earth who opens a browser is here.
@@ -358,7 +350,6 @@ icon: fa-solid fa-route
 
 # Traffic Routing
 
-<!--
 Great job so far! Your house is built.
 
 But wait - how does traffic know WHERE to go inside your VPC? When a message arrives at the front door, how does it know "turn left for the app server" or "go straight for the database"?
@@ -386,7 +377,6 @@ points:
     flat: true
 ---
 
-<!--
 Think of a Route Table as a MAP with directions written on it. Every subnet gets a map.
 
 THE MAIN ROUTE TABLE - The automatic map:
@@ -436,7 +426,7 @@ heading: Common Route Table Configurations
 | 10.1.0.0/16 | pcx-xxx | Any | VPC Peering connection |
 | 0.0.0.0/0 | tgw-xxx | Any | Transit Gateway |
 
-<!--
+
 Let's read this table like a recipe. Each row is one instruction in the GPS.
 
 ROW 1 - "Stay home" rule:
@@ -474,7 +464,6 @@ icon: fa-solid fa-shield-halved
 
 # Security - Layers of Defense
 
-<!--
 Your VPC house is built and has roads. Now it is time to PROTECT it!
 
 Think about how you protect your house in real life. You have:
@@ -510,7 +499,6 @@ heading: Security Groups vs Network ACLs
 - Allow and Deny rules
 - First match wins by rule number (lowest first)
 
-<!--
 Time for the most important comparison in all of AWS networking! Pay close attention - this confuses even experienced engineers!
 
 SECURITY GROUPS - The Smart Bouncer:
@@ -550,7 +538,7 @@ heading: Security Group vs NACL Quick Reference
 | Return traffic | Auto-allowed | Must be explicit |
 | Default VPC | Deny all inbound | Allow all |
 
-<!--
+
 This table is your CHEAT SHEET! Let's go through every row with a simple example.
 
 "Applied at" row:
@@ -588,7 +576,6 @@ icon: fa-solid fa-door-open
 
 # Gateways - Entry and Exit Points
 
-<!--
 Your house is built, your rooms are ready, your security is set up. Now we need DOORS!
 
 Different types of traffic need different types of doors:
@@ -618,7 +605,6 @@ points:
     faIcon: fa-solid fa-star-of-life
 ---
 
-<!--
 GATEWAY 1 - INTERNET GATEWAY (The Main Front Door):
 This is the big glass front door of your VPC building. EVERYONE who visits your website goes through here. People from the internet can come IN (to your public subnet) and your public computers can go OUT.
 
@@ -661,7 +647,6 @@ items:
     faIcon: fa-solid fa-earth-americas
 ---
 
-<!--
 Let's tell a STORY! Follow the journey of a tiny packet of data.
 
 Our hero: a little packet. It lives inside an App Server in a PRIVATE subnet. The app server wants to download a Node.js update from the npm website.
@@ -693,7 +678,6 @@ icon: fa-solid fa-plug
 
 # VPC Endpoints - Stay on the AWS Network
 
-<!--
 Quick question: when your app server in a private subnet needs to save a file to Amazon S3, where does that traffic go?
 
 Default answer: it goes through NAT Gateway, out through the Internet Gateway, ONTO THE PUBLIC INTERNET, and then into Amazon S3's public entrance.
@@ -719,7 +703,6 @@ points:
     flat: true
 ---
 
-<!--
 There are TWO types of shortcuts and they work in very different ways.
 
 TYPE 1 - GATEWAY ENDPOINTS (The Free Shortcut!):
@@ -766,7 +749,6 @@ flowchart LR
     IE -->|PrivateLink| SSM
 ```
 
-<!--
 Look at this picture carefully! This is the story of traffic that never leaves home.
 
 In the middle is YOUR VPC (the purple box). Everything inside it is yours and private.
@@ -798,7 +780,6 @@ icon: fa-solid fa-link
 
 # VPC Peering
 
-<!--
 Your VPC is amazing! But what if you have TWO VPCs and they need to talk to each other?
 
 For example: you have a "Production VPC" where your live website runs, and a "Shared Services VPC" where your logging servers and monitoring tools live. You need the Production VPC to send logs to the Shared Services VPC.
@@ -826,7 +807,6 @@ points:
     flat: true
 ---
 
-<!--
 WHAT PEERING DOES:
 Think of two neighborhoods that each have fences around them. Normally, you cannot get from Neighborhood A to Neighborhood B without going to the main city road (the internet).
 
@@ -866,7 +846,6 @@ icon: fa-solid fa-star-of-life
 
 # Transit Gateway - The Network Hub
 
-<!--
 We learned that VPC Peering is like building bridges. But what happens when you have 20 VPCs?
 
 20 VPCs need: 20 x 19 / 2 = 190 bridges!
@@ -898,7 +877,6 @@ points:
     flat: true
 ---
 
-<!--
 Let's understand all the superpowers of Transit Gateway!
 
 SUPERPOWER 1 - HUB AND SPOKE (The Train Station):
@@ -947,7 +925,6 @@ flowchart LR
     tg --> op
 ```
 
-<!--
 Look at the diagram! The circle in the middle with "Transit Gateway" written inside - that is your train station.
 
 Each box on the outside is a train line connecting to the station:
@@ -978,7 +955,6 @@ icon: fa-solid fa-building-lock
 
 # Hybrid Connectivity
 
-<!--
 Most companies do not live 100% in the cloud. They have real offices with real computers and servers. Maybe a data center full of servers they bought years ago.
 
 These on-premises (that means "at your own location") systems need to talk to your AWS VPC securely.
@@ -1016,7 +992,6 @@ heading: Site-to-Site VPN vs Direct Connect
 - Consistent, predictable latency
 - Best for high bandwidth and compliance
 
-<!--
 SITE-TO-SITE VPN - The Secret Tunnel:
 Imagine digging a tunnel between your house and your friend's house. Now you can walk between the two houses secretly underground! No one on the surface can see you.
 
@@ -1048,7 +1023,6 @@ icon: fa-solid fa-book
 
 # DNS in Your VPC
 
-<!--
 DNS! Another scary-sounding thing that is actually simple.
 
 DNS stands for Domain Name System. Here is a one-sentence explanation:
@@ -1080,7 +1054,6 @@ points:
     flat: true
 ---
 
-<!--
 DNS in your VPC has three important parts. Let's use simple stories!
 
 PART 1 - AMAZON'S BUILT-IN PHONE BOOK:
@@ -1123,7 +1096,6 @@ icon: fa-solid fa-magnifying-glass
 
 # Monitoring with VPC Flow Logs
 
-<!--
 Your VPC is built, secured, connected, and DNS is working. Amazing!
 
 But here is a question: how do you know if something weird is happening on your network?
@@ -1153,7 +1125,6 @@ points:
     flat: true
 ---
 
-<!--
 WHAT GETS CAPTURED - The Security Camera Records:
 The security camera at your school records: who entered, what time, which door.
 
@@ -1201,7 +1172,6 @@ heading: Flow Log Record - Key Fields
 | action | Traffic decision | ACCEPT or REJECT |
 | log-status | Logging outcome | OK, NODATA, SKIPDATA |
 
-<!--
 Let's read an ACTUAL flow log record together! This is what a real security engineer looks at.
 
 A flow log line looks like this:
@@ -1243,7 +1213,6 @@ icon: fa-solid fa-rocket
 
 # Best Practices
 
-<!--
 You have learned ALL the pieces of VPC! Incredible!
 
 Now let's talk about how the EXPERTS put it all together. These are the "golden rules" that come from real experience - from engineers who made mistakes so you do not have to.
@@ -1275,7 +1244,6 @@ points:
     faIcon: fa-solid fa-plug
 ---
 
-<!--
 Six golden rules! These come from REAL mistakes that cost companies time and money. Learn from others!
 
 RULE 1 - PLAN YOUR CIDR LIKE YOU PLAN A HOUSE:
@@ -1336,7 +1304,6 @@ items:
     description: VPC Flow Logs capture all traffic metadata for security and troubleshooting
 ---
 
-<!--
 Let's recap the whole journey we just went on together!
 
 We started with a big question: "How do I build my own private, secure network in the cloud?"
@@ -1369,7 +1336,6 @@ layout: end
 message: You are now a VPC architect!
 ---
 
-<!--
 Congratulations! You made it through the whole VPC course!
 
 Let's play a quick quiz game before we finish!
